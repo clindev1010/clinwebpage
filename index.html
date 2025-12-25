@@ -1,51 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Clin Blog</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<link rel="stylesheet" href="styles.css"> <!-- Include your compiled CSS file -->
-<script src="scripts.js"></script>
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
-.w3-bar-block .w3-bar-item {padding:20px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    
+    <title>Neon Curved Line Animation</title>
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
+    .w3-bar-block .w3-bar-item {padding:20px}
+    </style>
 </head>
 <body>
-<!-- <canvas id="snow"></canvas>
-<div class="center">
-  <div class="text-center">
-    <h1>8 bit snow</h1>
-  </div>
-</div> -->
-  <!-- Sidebar (hidden by default) -->
-<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()"
-  class="w3-bar-item w3-button">Close Menu</a>
-  <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Idle</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
-</nav>
-<!-- Top menu -->
-<div class="w3-top">
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
-    <div class="w3-right w3-padding-16">Mail</div>
-    <div class="w3-center w3-padding-16">Colin's Dev Blog</div>
-  </div>
-</div>
+    <!-- Sidebar (hidden by default) -->
+      <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+          <a href="javascript:void(0)" onclick="w3_close()"
+          class="w3-bar-item w3-button">Close</a>
+          <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Idle</a>
+          <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+        </nav>
 
-<script>
-// Script to open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-</script>
+     <!-- Overlay Page -->
+    <div id="overlay">
+      <canvas id="snow"></canvas>
 
+      <div class="overlay-content">
+        <h1>Welcome</h1><i class="fa-solid fa-candy-cane"></i>
+        <p>Scroll up to continue</p>
+      </div>
+
+      <div id="arrowTip"></div>
+    </div>
+
+      <!-- Main Page -->
+      <main id="main">
+         
+          <!-- Top menu -->
+          <div class="w3-top">
+            <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+              <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+              <!-- <div class="w3-right w3-padding-16">Mail</div> -->
+              <div class="w3-center w3-padding-16">Colin's Dev Blog</div>
+                <section class="intro-section">
+                  <div class="intro-card">
+                    <h2>About me</h2>
+                    <p1>
+                      I'm IT professional with a passion for coding and problem-solving. I'm always looking for new challenges and opportunities to grow my skills. 
+                    </p1>
+                  </div>
+                </section>
+                <br><br><br><br>
+            </div>
+          </div>
+      </main>
+
+
+      <script src="script.js"></script>
+    <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+    </script>
 </body>
+
 </html>
