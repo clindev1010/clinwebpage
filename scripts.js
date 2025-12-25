@@ -1,65 +1,92 @@
-var Snow = {
-  el: "#snow", 
-  density: 10000, // higher = fewer bits
-  maxHSpeed: 5, // How much do you want them to move horizontally
-  minFallSpeed: 2,
-	canvas: null,
-	ctx: null, 
-  particles: [],
-  colors: [],
-  mp: 1,
-  quit: false,
-  init(){
-    this.canvas = document.querySelector(this.el);
-    this.ctx = this.canvas.getContext("2d");
-    this.reset();
-    requestAnimationFrame(this.render.bind(this));
-    window.addEventListener("resize", this.reset.bind(this));
-  },
-  reset(){
-    this.w = window.innerWidth;
-    this.h = window.innerHeight;
-    this.canvas.width = this.w;
-    this.canvas.height = this.h;
-    this.particles = [];
-    this.mp = Math.ceil(this.w * this.h / this.density);
-		for(var i = 0; i < this.mp; i++)
-		{
-			var size = Math.random()*4+5;
-			this.particles.push({
-				x: Math.random()*this.w, //x-coordinate
-				y: Math.random()*this.h, //y-coordinate
-				w: size,
-				h: size,
-				vy: this.minFallSpeed + Math.random(), //density
-				vx:(Math.random()*this.maxHSpeed) - this.maxHSpeed/2,
-				fill: "#ffffff",
-				s: (Math.random() * 0.2) - 0.1
-			});
-		}
-  },
-  
-  render(){
-		this.ctx.clearRect(0, 0, this.w, this.h);
-		this.particles.forEach((p,i) => {
-      p.y += p.vy;
-			p.x += p.vx;
-			this.ctx.fillStyle = p.fill;
-			this.ctx.fillRect(p.x, p.y, p.w, p.h);
-      if(p.x > this.w+5 || p.x < -5 || p.y > this.h){
-        p.x = Math.random()*this.w;
-        p.y = -10;
-			}
-    });
-    if(this.quit){
-      return;
-    }
-		requestAnimationFrame(this.render.bind(this));
-  },
-  destroy(){
-    this.quit = true;
-  }
-	
-};
+const overlay = document.getElementById("overlay");
+const arrowTip = document.getElementById("arrowTip");
 
-var confetti = Snow.init();
+function closeOverlay() {
+  overlay.classList.add("closed");
+}
+
+/* Click arrow tip */
+arrowTip.addEventListener("click", closeOverlay);
+
+/* Scroll up */
+window.addEventListener("wheel", (e) => {
+  if (e.deltaY < 0) {
+    closeOverlay();
+  }
+});
+
+/* Mobile swipe up */
+let startY = 0;
+
+window.addEventListener("touchstart", (e) => {
+  startY = e.touches[0].clientY;
+});
+
+window.addEventListener("touchmove", (e) => {
+  if (startY - e.touches[0].clientY > 50) {
+    closeOverlay();
+  }
+});
+
+// snow flakes
+
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+
+let snowflakes = [];
+const snowflakeCount = 120;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function createSnowflakes() {
+  snowflakes = [];
+  for (let i = 0; i < snowflakeCount; i++) {
+    snowflakes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 3 + 1,
+      speed: Math.random() * 1 + 0.5,
+      opacity: Math.random()
+    });
+  }
+}
+createSnowflakes();
+
+function drawSnow() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "white";
+  ctx.beginPath();
+
+  for (let flake of snowflakes) {
+    ctx.globalAlpha = flake.opacity;
+    ctx.moveTo(flake.x, flake.y);
+    ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+  }
+
+  ctx.fill();
+  updateSnow();
+}
+
+function updateSnow() {
+  for (let flake of snowflakes) {
+    flake.y += flake.speed;
+
+    if (flake.y > canvas.height) {
+      flake.y = -flake.r;
+      flake.x = Math.random() * canvas.width;
+    }
+  }
+}
+
+function animateSnow() {
+  drawSnow();
+  requestAnimationFrame(animateSnow);
+}
+
+animateSnow();
