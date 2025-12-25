@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= OVERLAY ================= */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: #111;
+  color: white;
+  overflow: hidden;
+  z-index: 10;
+  transition: transform 0.5s ease;
+}
+
+#overlay.closed {
+  transform: translateY(-100%);
+}
+
+/* Snow */
+#snow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Overlay text */
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.overlay-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* Arrow tip */
+#arrowTip {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-left: 3px solid white;
+  border-top: 3px solid white;
+  transform: translateX(-50%) rotate(45deg);
+  animation: bounce 1.5s infinite;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px) rotate(45deg);
+  }
+}
+
+/* ================= MAIN PAGE ================= */
+#main {
+  padding: 80px 40px;
+  background: #f4f6f8;
+  min-height: 200vh;
+}
+
+/* Intro Section */
+.intro-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.intro-card {
+  background: white;
+  padding: 30px;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* News Section */
+.news-section h3 {
+  margin-bottom: 20px;
+}
+
+.news-cards {
+  display: flex;
+  gap: 20px;
+}
+
+/* News Card */
+.news-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 260px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .news-cards {
+    overflow-x: auto;
+  }
+
+  .news-card {
+    min-width: 240px;
+  }
+}
