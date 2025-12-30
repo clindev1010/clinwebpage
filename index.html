@@ -1,122 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css"> -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-    
-    
-    <title>ColinDev Blog</title>
-    <style>
-    /* body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
-    .w3-bar-block .w3-bar-item {padding:20px} */
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Colin Portfolio</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+
+<style>
+/* ================= THEME ================= */
+:root {
+  --bg: #020617;
+  --bg-secondary: #0b1220;
+  --card: #0f172a;
+  --border: #1e293b;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+
+  --accent: #22c55e;
+
+  --ctf-red: #dc2626;
+}
+
+body.light {
+  --bg: #f8fafc;
+  --bg-secondary: #ffffff;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --text: #020617;
+  --muted: #475569;
+}
+
+/* ================= BASE ================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Karma", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 500;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger {
+  display: none;
+  width: 28px;
+  height: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ================= HERO ================= */
+.hero {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+.subtitle {
+  font-size: 20px;
+  color: var(--muted);
+}
+
+.description {
+  max-width: 620px;
+  margin: 20px auto;
+  color: var(--muted);
+}
+
+/* ================= STANDARDIZED SOCIAL BUTTONS ================= */
+.socials {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  min-width: 150px;
+  height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 0 18px;
+  border-radius: 999px;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+
+  font-weight: 600;
+  font-size: 15px;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-btn i {
+  font-size: 16px;
+}
+
+/* Unified hover */
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* Brand accents (text only, subtle) */
+.github { color: #e5e7eb; }
+.linkedin { color: #38bdf8; }
+
+/* ================= CTFtime ================= */
+.ctftime {
+  color: var(--ctf-red);
+}
+
+.ctftime-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ctf-red);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* ================= SECTIONS ================= */
+.section {
+  padding: 80px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
+/* ================= GRID ================= */
+.grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 24px;
+}
+
+.card {
+  padding: 22px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* ================= FOOTER ================= */
+footer {
+  padding: 22px;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 64px;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+</style>
 </head>
+
 <body>
-    
 
+<!-- NAVBAR -->
 <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">ColinDev Blog</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">News/Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="theme-switch" id="theme-toggle">🌙</li>
-            </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+  <div class="nav-inner">
+    <div class="logo">Colin Portfolio</div>
 
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h1>Hi, I'm <span class="highlight">Colin</span></h1>
-            <p class="subtitle">IT Professional & Frontend Developer </p>
-            <p class="description">IT adventurer enthusiast, exploring IT worlds one area at a time.</p>
-            <div class="buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                <a href="https://ctftime.org/team/128989" target="_blank"  rel="noopener" class="ctftime-btn" aria-label="CTFtime Profile">
-  <span class="ctftime-icon">CTF</span>
-  <span class="ctftime-text">CTFtime</span>
-</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <span class="theme-toggle" id="themeToggle">🌙</span>
+    </div>
 
-            </div>
-        </div>
-    </section>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="project-grid">
-                <div class="card">
-                    <div class="card-image" style="background-color: #ddd; height: 150px;"></div> <div class="card-content">
-                        <h3>TBA</h3>
-                        <p>Testing in progress</p>
-                        <a href="#" class="link">View Code &rarr;</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-image" style="background-color: #ccc; height: 150px;"></div>
-                    <div class="card-content">
-                        <h3>TBA</h3>
-                        <p>Testing in progres..</p>
-                        <a href="#" class="link">View Code &rarr;</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-image" style="background-color: #bbb; height: 150px;"></div>
-                    <div class="card-content">
-                        <h3>Portfolio V1</h3>
-                        <!-- <p>My previous portfolio built with raw HTML/CSS.</p> -->
-                        <p>Testing in progress</p>
-                        <a href="#" class="link">View Code &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section id="home" class="hero">
+  <h1>Hi, I'm <span class="highlight">Colin</span></h1>
+  <p class="subtitle">IT Professional & Frontend Developer</p>
+  <p class="description">
+    IT enthusiast, exploring IT areas one universe at a time. 
+  </p>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <br>
-            <p>I'm currently open to new opportunities.</p>
-            <a href="mailto:email@example.com" class="btn btn-primary">Say Hello</a>
-        </div>
-    </section>
+  <div class="socials">
+    <a class="social-btn github" href="#">
+      <i class="fab fa-github"></i> GitHub
+    </a>
 
-    <footer>
-        <p>&copy; 2026 ColinDev. Built with HTML, CSS, JS.</p>
-    </footer>
+    <a class="social-btn linkedin" href="#">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
 
-    <!-- <div id="snow-overlay" class="snow-overlay">
-        <canvas id="snow-canvas"></canvas>
-        <div id="close-snow" class="close-arrow"></div>
-    </div> -->
+    <a
+      class="social-btn ctftime"
+      href="https://ctftime.org/team/128989"
+      target="_blank"
+    >
+      <span class="ctftime-logo">CTF</span>
+      CTFtime
+    </a>
+  </div>
+</section>
 
-    <!-- <div id="snow-overlay" class="snow-overlay">
-        <canvas id="snow-canvas"></canvas>
-        
-        <div class="overlay-content">
-            <h1 class="welcome-message">Welcome 
-                <i class="fas fa-candy-cane" style="color: #ff4d4d;"></i></h1>
-            <div id="close-snow" class="arrow-tip-up"></div>
-        </div>
-    </div> -->
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <h2 class="section-title">Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>TBA</h3>
+      <p>Testing in progress</p>
+    </div>
+    <div class="card">
+      <h3>Portfolio v1</h3>
+      <p>Work in Progress</p>
+    </div>
+  </div>
+</section>
 
-   <script>
-  document.querySelector(".ctftime-btn").addEventListener("click", () => {
-    console.log("CTFtime button clicked");
-  });
+<!-- BLOG -->
+<section id="blog" class="section">
+  <h2 class="section-title">Blog / Writeups</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Notes</h3>
+      <p>Work in Progress</p>
+    </div>
+    <div class="card">
+      <h3>TBC</h3>
+      <p>Work in Progress</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2 class="section-title">Get In Touch</h2>
+  <p style="text-align:center;color:var(--muted);">
+    Open to opportunities.
+  </p>
+</section>
+
+<footer>
+  © 2026 Colin · Portfolio
+</footer>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+const themeToggle = document.getElementById("themeToggle");
+
+// Default dark, load saved
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light") {
+  document.body.classList.add("light");
+  themeToggle.textContent = "☀️";
+}
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  const isLight = document.body.classList.contains("light");
+  themeToggle.textContent = isLight ? "☀️" : "🌙";
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+});
 </script>
 
 </body>
-
 </html>
