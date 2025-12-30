@@ -1,0 +1,45 @@
+Generate a full modern portfolio website with these specifications:
+
+1. Structure:
+   - Separate HTML files for Home, Projects, Blog.
+   - Shared CSS file (styles.css) and shared JS file (script.js).
+   - Include a responsive navbar with hamburger menu for mobile.
+   - Include a dark theme by default, with a toggle to switch to light theme. Store the preference in localStorage.
+
+2. Home Page:
+   - Hero section with a heading, subtitle, and description.
+   - Highlight my name in accent color.
+
+3. Projects Page:
+   - Grid layout displaying at least 3 project cards.
+   - Each card includes a category/meta tag, project title, and short description.
+
+4. Blog Page:
+   - Grid layout displaying at least 3 blog cards.
+   - Each card includes category/meta tag, blog title, and short description.
+
+5. Footer or header social buttons:
+   - Include standard social buttons (e.g., GitHub, LinkedIn) in a consistent style.
+   - Include a CTFTIME button linking to "https://ctftime.org/team/128989".
+   - Style CTFTIME button with red text and optionally the CTFTIME logo colors.
+
+6. CSS:
+   - Dark theme by default; light theme toggle works.
+   - Use glassmorphism-style cards (semi-transparent background with blur).
+   - Clear contrast between background and text for readability.
+   - Responsive layout with mobile adjustments.
+
+7. JS:
+   - Hamburger menu toggle for mobile.
+   - Theme toggle with localStorage persistence.
+   - Optional: page switching if single-page approach is desired, otherwise separate pages.
+
+8. Code Output:
+   - Provide 5 files: index.html, projects.html, blog.html, styles.css, script.js.
+   - Include full, ready-to-use code in each file.
+
+9. Bonus:
+   - Make the design modern, minimal, and readable.
+   - Make it professional portfolio style, suitable for recruiters or clients.
+
+Generate the code using **HTML5, CSS3, and vanilla JS only**. Do not include any frameworks unless specified.
