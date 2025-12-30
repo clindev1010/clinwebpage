@@ -42,6 +42,11 @@
             <div class="buttons">
                 <a href="#projects" class="btn btn-primary">View My Work</a>
                 <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                <a href="https://ctftime.org/team/128989" target="_blank"  rel="noopener" class="ctftime-btn" aria-label="CTFtime Profile">
+  <span class="ctftime-icon">CTF</span>
+  <span class="ctftime-text">CTFtime</span>
+</a>
+
             </div>
         </div>
     </section>
@@ -106,10 +111,12 @@
         </div>
     </div>
 
-    <script src="script.js"></script>  
+   <script>
+  document.querySelector(".ctftime-btn").addEventListener("click", () => {
+    console.log("CTFtime button clicked");
+  });
+</script>
 
-
-    <script>
     // Script to open and close sidebar
     // function w3_open() {
     //   document.getElementById("mySidebar").style.display = "block";
