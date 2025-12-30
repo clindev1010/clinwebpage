@@ -207,23 +207,6 @@ footer { text-align: center; padding: 20px; font-size: 0.9rem; opacity: 0.7; }
     pointer-events: none;
 }
 
-/* --- Animations --- */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-15px); }
-    60% { transform: translateY(-7px); }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* CTFtime Button */
 .ctftime-btn {
@@ -274,6 +257,39 @@ footer { text-align: center; padding: 20px; font-size: 0.9rem; opacity: 0.7; }
 .ctftime-btn:hover .ctftime-icon {
   background: #16a34a;
 }
+
+/* Optional: active click */
+.ctftime-btn:active {
+  transform: scale(0.97);
+}
+
+
+
+
+
+
+
+
+
+
+/* --- Animations --- */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* Optional: active click */
 .ctftime-btn:active {
