@@ -1,2 +1,3 @@
 # clinwebpage
-my static website page for fun and test
+static webpage portfolio
+https://clindev1010.github.io/clinwebpage/
